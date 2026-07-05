@@ -1,22 +1,5 @@
 from neonize.client import NewClient
 from neonize.events import ConnectedEv, MessageEv, event
-from threading import Thread
-from http.server import HTTPServer, BaseHTTPRequestHandler
-import os
-
-class Handler(BaseHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(200)
-        self.end_headers()
-        self.wfile.write(b"OK")
-
-def run_http():
-    port = int(os.getenv("PORT", 8000))
-    HTTPServer(("0.0.0.0", port), Handler).serve_forever()
-
-Thread(target=run_http, daemon=True).start()
-
-# дальше запускаешь своего neonize-бота
 
 client = NewClient("my_bot")
 banned_words = ["fuck", "shit", "motherfucker", "блять", "хуй", "жопа", "сука"]
