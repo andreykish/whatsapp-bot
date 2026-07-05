@@ -27,3 +27,4 @@ COPY . .
 
 # Запуск бота
 CMD ["python", "whatsapp_bot.py"]
+EXPOSE 8000
